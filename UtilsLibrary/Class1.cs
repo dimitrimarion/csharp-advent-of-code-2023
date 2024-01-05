@@ -2,9 +2,22 @@
 
 public static class FileLibrary
 {
-    public static string Hello()
+    public static string[] ReadInput(string path)
     {
-        return "Hello!";
+        string[] readText = [];
+        if (File.Exists(path))
+        {
+            readText = File.ReadAllLines(path);
+        }
+        return readText;
+    }
+
+    public static void PrintInput(string[] input)
+    {
+        foreach (string line in input)
+        {
+            Console.WriteLine(line);
+        }
     }
 
 }

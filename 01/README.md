@@ -19,3 +19,4 @@ link: https://adventofcode.com/2023/day/1
 - [Int32.Parse Method (System) | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.int32.parse?view=net-8.0)
 - [Int32.TryParse Method (System) | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.int32.tryparse?view=net-8.0)
 - [Dictionary<TKey,TValue> Class (System.Collections.Generic) | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-8.0)
+- [File and Stream I/O - .NET | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/standard/io/)

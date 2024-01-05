@@ -1,3 +1,4 @@
 ﻿using UtilsLibrary;
 
-Console.WriteLine(FileLibrary.Hello());
+string[] input = FileLibrary.ReadInput("./input.txt");
+FileLibrary.PrintInput(input);
