@@ -12,11 +12,11 @@ Dictionary<string, int> cubesInBag = new Dictionary<string, int>
 
 int gameIndex = 1;
 int gameIndexSum = 0;
+int power = 0;
 foreach (string line in input)
 {
     //    Console.WriteLine(String.Join("|", line.Split(":")));
     string[] cubesSet = line.Split(":")[1].Split(";");
-    Console.WriteLine(String.Join("|", cubesSet));
     bool gameValid = true;
     foreach (string set in cubesSet)
     {
@@ -24,13 +24,11 @@ foreach (string line in input)
             break;
 
         string[] colorsSet = set.Split(",");
-        Console.WriteLine(String.Join("|", colorsSet));
         foreach (string color in colorsSet)
         {
             string[] cube = color.Trim().Split();
             string cubeColor = cube[1];
             int cubeValue = int.Parse(cube[0]);
-            Console.WriteLine(String.Join("|", cube));
             int cubeColorValue;
             if (cubesInBag.TryGetValue(cubeColor, out cubeColorValue))
             {
@@ -45,5 +43,39 @@ foreach (string line in input)
     if (gameValid)
         gameIndexSum += gameIndex;
     gameIndex++;
+
+    Dictionary<string, int> cubesNumbers = new Dictionary<string, int>
+    {
+        {"blue", 0},
+        {"red", 0},
+        {"green", 0}
+    };
+
+    foreach (string set in cubesSet)
+    {
+        string[] colorsSet = set.Split(",");
+        foreach (string color in colorsSet)
+        {
+            string[] cube = color.Trim().Split();
+            string cubeColor = cube[1];
+            int cubeValue = int.Parse(cube[0]);
+            int cubeColorValue;
+            if (cubesNumbers.TryGetValue(cubeColor, out cubeColorValue))
+            {
+                if (cubeColorValue < cubeValue)
+                {
+                    cubesNumbers[cubeColor] = cubeValue;
+                }
+            }
+        }
+    }
+
+    int cubesPower = 1;
+    foreach (KeyValuePair<string, int> kv in cubesNumbers)
+    {
+        cubesPower *= kv.Value;
+    }
+    power += cubesPower;
 }
 Console.WriteLine($"Result {gameIndexSum}");
+Console.WriteLine($"Result Power {power}");
